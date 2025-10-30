@@ -18,8 +18,8 @@ api.interceptors.request.use(async (config) => {
     console.log("🔐 Method:", method);
     console.log("🔐 Token Prefix:", token?.substring(0, 20));
 
-    config.headers["Authorization"] = `DPoP ${token}`;
-    config.headers["DPoP"] = proof;
+    config.headers["Authorization"] = `Bearer ${token}`;
+    config.headers["x-bev-signature"] = proof;
 
     console.log(proof)
     config.withCredentials = true;
